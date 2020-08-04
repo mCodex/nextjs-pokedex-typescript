@@ -1,7 +1,7 @@
 import React from 'react';
 // import useSWR from 'swr';
 
-import { Container } from './styles';
+import { Container, PokeList, PokeCard } from './styles';
 
 interface IHomeProps {
   pokemons: IPokemon[];
@@ -12,26 +12,19 @@ const Home: React.FC<IHomeProps> = (props: IHomeProps) => {
 
   return (
     <Container>
-      <table>
-        <tr>
-          <th>#</th>
-          <th>Image</th>
-          <th>Name</th>
-        </tr>
-        <tbody>
-          {pokemons.map(({ id, name, image }) => (
-            <tr key={id}>
-              <td>{id}</td>
-              <td>
-                <img src={image} alt={name} />
-              </td>
-              <td>
-                <span key={name}>{name}</span>
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+      <h1>Pokédex</h1>
+
+      <PokeList>
+        {pokemons.map(({ id, name, image }) => (
+          <PokeCard key={id}>
+            <h3># {id}</h3>
+
+            <img src={image} alt={name} />
+
+            <h4 key={name}>{name}</h4>
+          </PokeCard>
+        ))}
+      </PokeList>
     </Container>
   );
 };

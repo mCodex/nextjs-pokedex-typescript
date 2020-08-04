@@ -18,14 +18,13 @@ interface IGetStaticProps {
   props: {
     pokemons: IPokemon[];
   };
-  revalidate: boolean;
 }
 
 export const getStaticProps = async (): Promise<IGetStaticProps> => {
   const {
     data: { results: initialPokemonsData },
   } = await api.get('pokemon', {
-    params: { limit: 20 },
+    params: { limit: 100 },
   });
 
   const pokemons: IPokemon[] = await Promise.all(
@@ -44,6 +43,5 @@ export const getStaticProps = async (): Promise<IGetStaticProps> => {
 
   return {
     props: { pokemons },
-    revalidate: true,
   };
 };
