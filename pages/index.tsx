@@ -1,10 +1,9 @@
 import React from 'react';
 
-import axios from 'axios';
-
 import HomePage from '../src/pages/Home';
 
 import api from '../src/utils/api';
+import organizeInitialPokemonData from '../src/utils/organizeInitialPokemonData';
 
 interface IHomeProps {
   pokemons: IPokemon[];
@@ -27,19 +26,7 @@ export const getStaticProps = async (): Promise<IGetStaticProps> => {
     params: { limit: 100 },
   });
 
-  const pokemons: IPokemon[] = await Promise.all(
-    initialPokemonsData.map(async (pokemon: IPokemon) => {
-      const { url } = pokemon;
-
-      const { data: pokemonDetail } = await axios.get(url);
-
-      return {
-        ...pokemon,
-        id: pokemonDetail.id,
-        image: `https://pokeres.bastionbot.org/images/pokemon/${pokemonDetail.id}.png`,
-      };
-    })
-  );
+  const pokemons: IPokemon[] = await organizeInitialPokemonData(initialPokemonsData);
 
   return {
     props: { pokemons },

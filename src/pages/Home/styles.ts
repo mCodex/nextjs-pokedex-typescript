@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 export const Container = styled.main`
   text-align: center;
+  margin: 0 20px;
 
   h1 {
     padding: 10px 0;
@@ -14,23 +15,25 @@ export const PokeList = styled.section`
   grid-gap: 10px;
 `;
 
-export const PokeCard = styled.button`
-  border: 1px solid #fdcb9e80;
-  border-radius: 5px;
-  background: transparent;
-  color: #fff;
-  text-transform: capitalize;
-  transition: 0.2s background;
-  padding: 10px 0;
+// interface IPaginationContainer {
+//   active: boolean;
+// }
 
-  &:hover {
-    background: #fdcb9e;
-    color: #000;
-  }
+export const PaginationContainer = styled.div`
+  margin: 20px;
 
-  img {
-    width: 100px;
-    height: 100px;
-    margin: 20px 0;
+  button {
+    color: white;
+    padding: 4px;
+    margin: 0 1px;
+    background: transparent;
+    border: none;
+    animation: 0.2s background-color;
+    font-size: 18px;
+
+    &:hover {
+      background-color: #00b7c2;
+      border-radius: 2px;
+    }
   }
 `;
