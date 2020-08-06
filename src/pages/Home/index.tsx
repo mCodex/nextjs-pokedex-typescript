@@ -14,7 +14,7 @@ interface IHomeProps {
 }
 
 const Home: React.FC<IHomeProps> = (props: IHomeProps) => {
-  const qtyPokemonFetchedPerRequest = 100;
+  const qtyPokemonFetchedPerRequest = 40;
 
   const { pokemons: prerenderedPokemons } = props;
 
@@ -57,7 +57,7 @@ const Home: React.FC<IHomeProps> = (props: IHomeProps) => {
         <>
           <PokeList>
             {pokemons.map((pokemon) => (
-              <PokeCard {...pokemon} />
+              <PokeCard key={pokemon.name} {...pokemon} />
             ))}
           </PokeList>
           <PaginationContainer>

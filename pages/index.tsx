@@ -23,7 +23,7 @@ export const getStaticProps = async (): Promise<IGetStaticProps> => {
   const {
     data: { results: initialPokemonsData },
   } = await api.get('pokemon', {
-    params: { limit: 100 },
+    params: { limit: 40 },
   });
 
   const pokemons: IPokemon[] = await organizeInitialPokemonData(initialPokemonsData);
